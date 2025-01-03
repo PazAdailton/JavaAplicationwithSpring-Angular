@@ -1,0 +1,74 @@
+<div class="container mt-4">
+    <div class="card">
+            <h1>Formulário Estudantes</h1>
+<form (ngSubmit)="editandoEstudante ? atualizar(): salvar()" #estudanteForm="ngForm"> 
+    <div class="form-group">
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="novoEstudante.nome" name="nome" class="form-control" id="txtNome" aria-describedby="nomeHelp" placeholder="Enter Nome" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="novoEstudante.email" name="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
+      </div>
+
+      <div class="form-group">
+      <label for="CategoriaEstudantil">Categoria Estudantil</label>
+      <select [(ngModel)]="novoEstudante.categoriaEstudantil" name="categoriaEstudantil" class="form-control"  id="catEstudantil" required>
+        <option value="null">--Select Branch--</option>  
+        <option value="B-Tech">B-Tech</option>  
+        <option value="BCA">BCA</option>  
+        <option value="MCA">MCA</option>  
+        <option value="M-Tech">M-Tech</option> 
+      </select>
+
+      </div>
+
+    <button type="submit" class="btn btn-primary">Submit
+        {{editandoEstudante? 'Atualizar' : 'Salvar'}}
+    </button>
+
+    <button type="button" class="btn btn-primary"
+    (click)="cancelarEdicao()" *ngIf="editandoEstudante">Cancelar
+    </button>
+</form>
+
+
+    <!-- Lista De Estudantes-->
+
+    <h3>Lista de Estudantes</h3>
+
+    <button type="button" class="btn btn-info"
+    (click)="carregarEstudantes()">
+    </button>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Categoria Estudantil</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr *ngFor="let estudante of estudantes">
+            <td>{{estudante.id}}</td>
+            <td>{{estudante.nome}}</td>
+            <td>{{estudante.email}}</td>
+            <td>{{estudante.categoriaEstudantil}}</td>
+            <td>
+            <button type="button" class="btn btn-warning btn-sm"
+            (click)="buscarPorId(estudante.id!)">Editar
+            </button>
+
+            <button type="button" class="btn btn-danger" btn-sm
+            (click)="excluir(estudante.id!)">Excluir
+            </button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+</div>
