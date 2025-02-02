@@ -1,0 +1,37 @@
+<div class="row justify-content-left">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-secondary">
+               <h5 class="text-center">Lista Estudantes</h5> 
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered m-2">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Categoria-Infantil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(item of listaEstudantes; track $index){
+                        <tr>
+                            <td>{{$index+1}}</td>
+                            <td>{{item.nome}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.categoriaEstudantil}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-3 m-2">
+                <button class="btn btn-success m-2" (click)="getEstudantes()">Load Estudantes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+</div>
