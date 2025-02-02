@@ -16,3 +16,4 @@
 //	                .allowCredentials(true);  // Permite credenciais (cookies, autenticação)
 //	    }
 //}
+ 

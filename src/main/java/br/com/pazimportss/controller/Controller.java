@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.pazimportss.model.Estudante;
 import br.com.pazimportss.service.EstudanteService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value="/api/estudantes")
 public class Controller {
@@ -26,7 +28,7 @@ public class Controller {
 	private EstudanteService estudanteService;
 	
 	
-	@PostMapping("/cadastrar")
+	@PostMapping("/salvarestudante")
 	public ResponseEntity<Estudante> cadastrar(@RequestBody Estudante estudante ){
 		Estudante estudanteCadastrado = estudanteService.salvar(estudante);
 		if(estudanteCadastrado.getId() != null) {
@@ -36,7 +38,7 @@ public class Controller {
 		}
 		}
 	
-	@GetMapping
+	@GetMapping("/listaestudante")
 	public ResponseEntity<Collection<Estudante>> buscarTodos(){
 		 Collection<Estudante> estudanteBuscados =   estudanteService.buscarTodos();
 		if(!estudanteBuscados.isEmpty()) {

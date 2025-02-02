@@ -15,6 +15,8 @@ public class Estudante {
 	private String email;
 	private String categoriaEstudantil;
 	
+	
+	
 	public Estudante() {
 		
 	}
